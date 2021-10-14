@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-bandeja-entrada',
   templateUrl: './bandeja-entrada.component.html',
-  styleUrls: ['./bandeja-entrada.component.scss']
+  styleUrls: ['../header/header.component.scss']
 })
 export class BandejaEntradaComponent implements OnInit {
 
