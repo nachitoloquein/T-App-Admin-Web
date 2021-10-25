@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bandeja-entrada',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../header/header.component.scss']
 })
 export class BandejaEntradaComponent implements OnInit {
-
-  constructor() { }
+  teas: Observable<any[]>;
+  constructor(db: AngularFirestore) { 
+    this.teas = db.collection('te').valueChanges()
+  }
 
   ngOnInit(): void {
   }
