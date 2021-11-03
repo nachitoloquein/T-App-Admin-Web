@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { TeService } from 'src/app/services/te.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,12 +8,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['../header/header.component.scss']
 })
 export class BandejaEntradaComponent implements OnInit {
-  teas: Observable<any[]>;
-  constructor(db: AngularFirestore) { 
-    this.teas = db.collection('te').valueChanges()
+  
+  teas:any;
+  constructor(private teService: TeService) {  
+    this.teService.listaTeas().subscribe(tea=>{
+      this.teas = tea;
+    })
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
 }

@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AgregarTeComponent } from './agregar-te/agregar-te.component';
 import { environment } from 'src/environments/environment';
+import { TeService } from '../services/te.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [TeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
