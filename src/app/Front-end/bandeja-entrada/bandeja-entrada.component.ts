@@ -9,6 +9,17 @@ import { Observable } from 'rxjs';
 })
 export class BandejaEntradaComponent implements OnInit {
   
+
+  editarTe:any={
+  nombre: '',
+  dificultad: 0,
+  urlNacionalidad: '',
+  foto: '',
+  instrucciones: '',
+  temperatura: '',
+  tipoTe: '',
+  }
+
   teas:any;
   constructor(private teService: TeService) {  
     this.teService.listaTeas().subscribe(tea=>{
@@ -17,6 +28,18 @@ export class BandejaEntradaComponent implements OnInit {
   }
 
   ngOnInit(){
+  }
+
+  eliminar(tea){
+    this.teService.eliminarTe(tea);
+  }
+
+  editar(tea){
+    this.editarTe = tea;
+  }
+
+  agregarTeEditado(){
+    this.teService.editarTe(this.editarTe);
   }
 
 }

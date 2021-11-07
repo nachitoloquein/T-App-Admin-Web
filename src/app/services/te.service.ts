@@ -14,9 +14,11 @@ export interface Tea {
 }
 
 @Injectable()
+
 export class TeService {
   private teasCollections: AngularFirestoreCollection<Tea>;
   private teas: Observable<Tea[]>;
+  private teaDoc: AngularFirestoreDocument<Tea>;
 
   constructor(private db: AngularFirestore) { 
     this.teasCollections = db.collection<Tea>('te');
@@ -35,5 +37,15 @@ export class TeService {
 
   agregarTe(tea: Tea){
     this.teasCollections.add(tea);
+  }
+
+  eliminarTe(tea){
+    this.teaDoc = this.db.doc<Tea>(`te/${tea.id}`);
+    this.teaDoc.delete();
+  }
+
+  editarTe(tea){
+    this.teaDoc = this.db.doc<Tea>(`te/${tea.id}`);
+    this.teaDoc.update(tea);
   }
 }

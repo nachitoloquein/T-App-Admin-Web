@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <app-header></app-header>
 <div class="card-body">
@@ -12,6 +16,7 @@
                 <th>Instrucciones</th>
                 <th>Dificultad</th>
                 <th>Imagen</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -25,10 +30,69 @@
                 <td>{{tea.instrucciones}}</td>
                 <td>{{tea.dificultad}}/5</td>
                 <td><img [src]="tea.foto" alt="" height=100 width=100></td>
+                <td>
+                    <div class="float-left" (click)="eliminar(tea)">
+                        <i class="far fa-trash-alt"></i>
+                    </div>
+                    <div class="float-right" (click)="editar(tea)" data-toggle="modal" data-target="#exampleModal">
+                        <i class="far fa-edit"></i>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
     <app-agregar-te></app-agregar-te>
 </div>
 <app-footer></app-footer>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{editarTe.nombre}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           <form (ngSubmit)="agregarTeEditado()">
+              <input type="text" required placeholder="Nombre del té" class="form-control" [(ngModel)]="editarTe.nombre" name="nombre"> 
+              <select class="form-select form-control" [(ngModel)]="editarTe.dificultad" name="dificultad">
+                  <option selected disabled>Dificultad</option>
+                  <option [ngValue]="1">1</option>
+                  <option [ngValue]="1.5">1,5</option>
+                  <option [ngValue]="2">2</option>
+                  <option [ngValue]="2.5">2,5</option>
+                  <option [ngValue]="3">3</option>
+                  <option [ngValue]="3.5">3,5</option>
+                  <option [ngValue]="4">4</option>
+                  <option [ngValue]="4.5">4,5</option>
+                  <option [ngValue]="5">5</option>
+              </select>
+              <select class="form-select form-control" [(ngModel)]="editarTe.urlNacionalidad" name="nacionalidad">
+                  <option selected disabled>Nacionalidad</option>
+                  <option value="https://www.countryflags.io/gb/flat/64.png">Inglaterra</option>
+                  <option value="https://www.countryflags.io/cn/flat/64.png">Taiwan</option>
+                  <option value="https://www.countryflags.io/tw/flat/64.png">China</option>
+              </select>
+              <input type="text" required placeholder="Inserte URL de imagen" class="form-control" [(ngModel)]="editarTe.foto" name="foto">
+              <input type="text" required placeholder="Instrucciones" class="form-control" [(ngModel)]="editarTe.instrucciones" name="instrucciones">
+              <select class="form-select form-control" [(ngModel)]="editarTe.temperatura" name="temperatura">
+                  <option selected disabled>Temperatura</option>
+                  <option value="Frío">Frío</option>
+                  <option value="Caliente">Caliente</option>
+              </select>
+              <select class="form-select form-control" [(ngModel)]="editarTe.tipoTe" name="tipoTe">
+                  <option selected disabled>Tipo de té</option>
+                  <option value="Té Negro">Té Negro</option>
+                  <option value="Té Verde">Té Verde</option>
+                  <option value="Té Rojo">Té Rojo</option>
+              </select>
+              <button class="btn btn-warning">Guardar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
