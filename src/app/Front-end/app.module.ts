@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AgregarTeComponent } from './agregar-te/agregar-te.component';
 import { environment } from 'src/environments/environment';
 import { TeService } from '../services/te.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TeService } from '../services/te.service';
     BandejaEntradaComponent,
     HeaderComponent,
     FooterComponent,
-    AgregarTeComponent
+    AgregarTeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
