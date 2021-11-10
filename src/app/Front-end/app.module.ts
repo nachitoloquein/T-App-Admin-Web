@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 //Componentes
 import { AppComponent } from './app.component';
 import { BandejaEntradaComponent } from './bandeja-entrada/bandeja-entrada.component';
@@ -29,7 +30,8 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    Ng2SearchPipeModule
   ],
   providers: [TeService],
   bootstrap: [AppComponent]

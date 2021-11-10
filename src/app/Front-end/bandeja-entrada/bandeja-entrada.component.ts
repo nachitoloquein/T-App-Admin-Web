@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class BandejaEntradaComponent implements OnInit {
   
+  term:string;
+
 
   editarTe:any={
   nombre: '',

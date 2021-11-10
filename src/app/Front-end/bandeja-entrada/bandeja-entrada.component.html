@@ -6,6 +6,7 @@
 <app-header></app-header>
 <div class="card-body">
     <span class="h3">Lista de tés</span>
+    <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar té...">
     <table class="table table-striped mt-5">
         <thead>
             <tr>
@@ -20,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let tea of teas" [ngSwitch]="tea.urlNacionalidad">
+            <tr *ngFor="let tea of teas | filter: term" [ngSwitch]="tea.urlNacionalidad">
                 <td>{{tea.nombre}}</td>
                 <td>{{tea.temperatura}}</td>
                 <td>{{tea.tipoTe}}</td>
