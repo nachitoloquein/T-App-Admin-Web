@@ -20,6 +20,7 @@ export class BandejaEntradaComponent implements OnInit {
   instrucciones: '',
   temperatura: '',
   tipoTe: '',
+  favorito: Boolean
   }
 
   teas:any;

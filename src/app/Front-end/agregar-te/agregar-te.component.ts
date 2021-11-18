@@ -16,6 +16,7 @@ export class AgregarTeComponent implements OnInit {
   instrucciones: '',
   temperatura: '',
   tipoTe: '',
+  favorito: false
   }
 
   constructor(private teService: TeService) { }

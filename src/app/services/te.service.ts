@@ -11,6 +11,7 @@ export interface Tea {
   instrucciones: string,
   temperatura: string,
   tipoTe: string,
+  favorito: false
 }
 
 @Injectable()
